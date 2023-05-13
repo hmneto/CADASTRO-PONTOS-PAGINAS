@@ -114,6 +114,7 @@ void ConfigureServices(IServiceCollection services)
     services.AddDbContext<DatabaseContext>();
     services.AddTransient<IUsuarioService, UsuarioService>();
     services.AddTransient<IClienteService, ClienteService>();
+    services.AddTransient<IImagemService, ImagemService>();
     services.AddTransient<IPaginaService, PaginaService>();
     services.AddTransient<IIconeService,IconeService>();
     services.AddTransient<IConcessionariaService,ConcessionariaService>();
