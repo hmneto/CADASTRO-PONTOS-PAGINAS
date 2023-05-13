@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
+#nullable disable
 
 namespace bahmapi.Entities
 {
@@ -54,6 +54,13 @@ namespace bahmapi.Entities
                 entity.Property(e => e.IdCliente)
                     .HasColumnName("id_cliente")
                     .HasColumnType("int(11)");
+
+                entity.Property(e => e.ChaveGoogleMaps)
+                    .IsRequired()
+                    .HasColumnName("chave_google_maps")
+                    .HasColumnType("varchar(50)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_unicode_ci");
 
                 entity.Property(e => e.IpCliente)
                     .IsRequired()
@@ -572,8 +579,8 @@ namespace bahmapi.Entities
                 entity.Property(e => e.PerfilUsuario)
                     .IsRequired()
                     .HasColumnName("perfil_usuario")
-                    .HasColumnType("enum('ADMINISTRADOR','EDITOR','CLIENTE')")
-                    .HasDefaultValueSql("'CLIENTE'")
+                    .HasColumnType("enum('admin','user')")
+                    .HasDefaultValueSql("'user'")
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
 

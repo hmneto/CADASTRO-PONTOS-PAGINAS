@@ -298,9 +298,12 @@ function initMap(){
 
 
 function mapaInteracao() {
-  const scriptMaps = document.createElement('script')
-  scriptMaps.src="https://maps.googleapis.com/maps/api/js?key=__&callback=initMap"
-  document.body.appendChild(scriptMaps)
+  httpGet('/ApiMaps/Google').then(x=>{
+    const scriptMaps = document.createElement('script')
+    scriptMaps.src=`https://maps.googleapis.com/maps/api/js?key=${x.apiMaps}&callback=initMap`
+    document.body.appendChild(scriptMaps)
+  })
+
 
 }
 

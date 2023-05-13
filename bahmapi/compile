@@ -5,3 +5,7 @@ sudo docker-compose up -d --build
 flyctl launch
 
 flyctl deploy
+
+
+dotnet tool install --global dotnet-ef
+dotnet ef dbcontext scaffold "Server=localhost;DataBase=xxxxx;Uid=xxxx;Pwd=xxxx;" Pomelo.EntityFrameworkCore.MySql -o Entities -f -c DatabaseContext

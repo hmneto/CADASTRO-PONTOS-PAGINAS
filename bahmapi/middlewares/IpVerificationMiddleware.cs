@@ -42,9 +42,9 @@ namespace bahmapi.Middewares
                 if (!userIp.Equals(registeredIp))
                 {
                     // IP inválido - negar acesso
-                    context.Response.StatusCode = (int)HttpStatusCode.Forbidden;
-                    await context.Response.WriteAsync("IP inválido.");
-                    return;
+                    // context.Response.StatusCode = (int)HttpStatusCode.Forbidden;
+                    // await context.Response.WriteAsync("IP inválido.");
+                    // return;
                 }
             }
 
