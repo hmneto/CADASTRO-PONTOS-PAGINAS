@@ -1,0 +1,32 @@
+<div class="container-fluid" style="padding: 100px">
+
+  <div class="row">
+    <button onclick='openViewTable("site",false);'>Novo Site</button>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="buscaSite">Busca Site</label>
+
+        <input type="text" class="form-control" id="buscaSite" onkeyup="buscarTable('buscaSite','tabelaSite')">
+
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped" id="tabelaSite">
+    <thead>
+      <tr>
+        <th scope="col">Nome Site</th>  
+        <th scope="col">Link Site</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaListaSites">
+
+    </tbody>
+  </table>
+
+
+</div>

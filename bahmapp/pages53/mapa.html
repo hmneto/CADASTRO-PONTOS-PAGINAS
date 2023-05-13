@@ -1,0 +1,120 @@
+<select  id="tipoPosicaoSatelite" style="
+font-size: 20px;
+cursor: pointer;
+position: absolute;
+z-index: 10;
+margin-top: 80px;
+margin-left: 10px;
+background-color: white;
+padding: 2;
+">
+  <option selected>GRAU DECIMAL</option>
+  <option>GRAU MINUTO SEGUNDO</option>
+  <option>GRAU MINUTO</option> 
+</select>
+
+<input maxlength="11" size="11" className="item" type="text" id="latInput" placeholder="latitude" style="
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    margin-top: 130px;
+    margin-left: 10px;
+    background-color: white;
+    padding: 2;
+  " />
+
+<input maxlength="11" size="11" className="item" type="text" id="longInput" placeholder="longitude" style="
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    margin-top: 180px;
+    margin-left: 10px;
+    background-color: white;
+    padding: 2;
+  " />
+
+<input maxlength="2" size="1" className="item" type="text" id="zoom" placeholder="zoom" style="
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    margin-top: 230px;
+    margin-left: 10px;
+    background-color: white;
+    padding: 2;
+  " />
+
+<button id="controlPosicao" onclick="goToPosition()" style="
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    margin-top: 280px;
+    margin-left: 10px;
+    background-color: white;
+    padding: 2;
+  ">
+  Ir
+</button>
+
+<button id="controlSavarPonto" onclick="
+if(!getLastLatLngClick())return;
+openView('ponto',false);" style="
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    margin-top: 330px;
+    margin-left: 10px;
+    background-color: white;
+    padding: 2;
+  ">
+  Salvar Ponto
+</button>
+
+<button id="controlEditarPonto" onclick="
+  if(!getLastLatLngClick())return;
+  if(!isPointClicked())return;
+  openView('ponto',true);" style="
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    margin-top: 380px;
+    margin-left: 10px;
+    background-color: white;
+    padding: 2;
+  ">
+  Editar Ponto
+</button>
+
+<button id="controlPaginas" onclick="openView('listaPagina',true);" style="
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    margin-top: 430px;
+    margin-left: 10px;
+    background-color: white;
+    padding: 2;
+  ">
+  Paginas
+</button>
+
+
+<button id="controlPaginas" onclick="openView('listaImagens',true);" style="
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    margin-top: 480px;
+    margin-left: 10px;
+    background-color: white;
+    padding: 2;
+  ">
+  Imagens
+</button>
+
+<div id="googleMap" style="width: 100%"></div>

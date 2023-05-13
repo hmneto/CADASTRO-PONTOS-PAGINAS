@@ -1,0 +1,32 @@
+<div class="container-fluid" style="padding: 100px">
+
+    <div class="row">
+      <button onclick='openViewTable("imagem",false);'>Novo Imagem</button>
+    </div>
+  
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="buscaImagem">Busca Imagem</label>
+  
+          <input type="text" class="form-control" id="buscaImagem" onkeyup="buscarTable('buscaImagem','tabelaImagem')">
+  
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped" id="tabelaImagem">
+      <thead>
+        <tr>
+          <th scope="col">Nome Imagem</th>  
+          <th scope="col">Link Imagem</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaListaImagems">
+  
+      </tbody>
+    </table>
+  
+  
+  </div>

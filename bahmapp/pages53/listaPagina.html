@@ -1,0 +1,48 @@
+<div class="container-fluid" style="padding: 100px">
+
+  <div class="row">
+    <button id="buttonMap" onclick='openView("mapa");'>Mapa</button>
+  </div>
+
+  <div class="row">
+    <button id="buttonPage" onclick='openView("pagina",false);'>Nova Página</button>
+  </div>
+<!-- 
+  <div class="row">
+    <button onclick='openView("listaConcessionaria",false);'>Lista Concessionaria</button>
+  </div>
+
+
+  <div class="row">
+    <button onclick='openView("listaContato",false);'>Lista Contato</button>
+  </div>
+
+
+  <div class="row">
+    <button onclick='openView("listaCliente",false);'>Lista Cliente</button>
+  </div> -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="buscaPagina">Busca Página</label>
+
+        <input type="text" class="form-control" id="buscaPagina"
+         onkeyup="buscarTable('buscaPagina','tabelaListaPaginas')">
+
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped" id="tabelaListaPaginas">
+    <thead>
+      <tr>
+        <th scope="col">Nome Pagina</th>
+        <th scope="col">Endereco Pagina</th>
+        <th scope="col">Concessionaria</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaListaPaginas">
+    </tbody>
+  </table>
+</div>

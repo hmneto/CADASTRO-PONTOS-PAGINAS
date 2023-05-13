@@ -1,0 +1,54 @@
+<div class="container-fluid" style="padding: 100px">
+    <div class="row">
+        <button onclick='openViewTable("listaSite");'>Sites</button>
+    </div>
+
+    <input id="idSite" type="text" hidden />
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="nomeSite">Nome Site</label>
+                <input type="text" class="form-control" id="nomeSite" />
+            </div>
+        </div>
+    </div>
+
+
+
+        <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="linkSite">Link Site</label>
+                <input type="text" class="form-control" id="linkSite" />
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="tipoSite">Tipo Site</label>
+                <select type="text" class="form-control" id="tipoSite" >
+
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+          <button id="salvarSite" onclick="siteNovo()">Salvar</button>
+    
+          <button id="editarSite" onclick="siteEdita()" hidden>Editar</button>
+        </div>
+      </div>
+
+
+</div>

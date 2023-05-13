@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  
+    <div class="row">
+      <button onclick='openViewTable("icone",false);'>Novo Icone</button>
+    </div>
+  
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="buscaIcone">Busca Icone</label>
+  
+          <input type="text" class="form-control" id="buscaIcone"
+            onkeyup="buscarTable('buscaIcone','tabelaIcone')">
+  
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped" id="tabelaIcone">
+      <thead>
+        <tr>
+          <th scope="col">Nome Icone</th>
+          <th scope="col">Link Icone</th>
+          <th scope="col">Ação Icone</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaListaIcones">
+  
+      </tbody>
+    </table>
+  
+  
+  </div>

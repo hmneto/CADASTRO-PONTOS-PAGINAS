@@ -1,0 +1,101 @@
+<div class="container-fluid" style="padding: 100px">
+  <div class="row">
+    <button onclick='openView("listaPagina",true);'>Paginas</button>
+  </div>
+
+  <input id="idPagina" type="text" hidden />
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="nomePagina">Nome Pagina</label>
+        <input type="text" class="form-control" id="nomePagina" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="enderecoPagina">Endereço</label>
+        <input type="text" class="form-control" id="enderecoPagina" />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <div class="form-group">
+        <label for="concessionaria">Concessionaria</label>
+        <input type="text" class="form-control" id="concessionaria" disabled />
+        <input type="text" class="form-control" id="idConcessionaria" hidden />
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="addIcon" style="color: white;">-</label>
+
+        <button type="button" class="btn btn-primary form-control" data-bs-toggle="modal" data-bs-target="#modalPagina"
+          onclick="openViewTable('listaConcessionaria')">
+          +
+        </button>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="addIcon" style="color: white;">-</label>
+
+        <button type="button" class="btn btn-primary form-control" data-bs-toggle="modal" data-bs-target="#modalPagina"
+          onclick="openViewTable('listaContato')">
+          Lista de Contatos Página
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+
+
+  <div id="listaContatoSelecionado"></div>
+
+
+
+  
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="addIcon" style="color: white;">-</label>
+
+        <button type="button" class="btn btn-primary form-control" data-bs-toggle="modal" data-bs-target="#modalPagina"
+          onclick="openViewTable('listaSite')">
+          Lista de Sites Página
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+
+
+  <div id="listaSiteSelecionado"></div>
+
+
+  <br />
+  <div class="row">
+    <div class="col-md-12">
+      <button id="salvar" type="button" onclick="paginaNovo()">Salvar</button>
+      <button id="editar" onclick="paginaEdita()" hidden>Editar</button>
+    </div>
+  </div>
+</div>
+
+
+

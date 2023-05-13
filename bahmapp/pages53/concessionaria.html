@@ -1,0 +1,37 @@
+<div class="container-fluid" style="padding: 100px">
+    <div class="row">
+        <button onclick='openViewTable("listaConcessionaria");'>Concessionarias</button>
+    </div>
+
+    <input id="idConcessionaria" type="text" hidden />
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="nomeConcessionaria">Nome Concessionaria</label>
+                <input type="text" class="form-control" id="nomeConcessionaria" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="infoConcessionaria">Info Concessionaria</label>
+                <input type="text" class="form-control" id="infoConcessionaria" />
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+          <button id="salvarConcessionaria" onclick="concessionariaNovo()">Salvar</button>
+    
+          <button id="editarConcessionaria" onclick="concessionariaEdita()" hidden>Editar</button>
+        </div>
+      </div>
+
+
+</div>

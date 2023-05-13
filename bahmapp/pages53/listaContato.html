@@ -1,0 +1,32 @@
+<div class="container-fluid" style="padding: 100px">
+  
+    <div class="row">
+      <button onclick='openViewTable("contato",false);'>Nova Contato</button>
+    </div>
+  
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="buscaContato">Busca Contato</label>
+  
+          <input type="text" class="form-control" id="buscaContato"
+            onkeyup="buscarTable('buscaContato','tabelaContato')">
+  
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped" id="tabelaContato">
+      <thead>
+        <tr>
+            <th scope="col">Info Contato</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaListaContatos">
+  
+      </tbody>
+    </table>
+  
+  
+  </div>

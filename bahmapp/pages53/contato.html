@@ -1,0 +1,30 @@
+<div class="container-fluid" style="padding: 100px">
+    <div class="row">
+        <button onclick='openViewTable("listaContato");'>Contatos</button>
+    </div>
+
+    <input id="idContato" type="text" hidden />
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="infoContato">Info Contato</label>
+                <input type="text" class="form-control" id="infoContato" />
+            </div>
+        </div>
+    </div>
+
+
+
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+          <button id="salvarContato" onclick="contatoNovo()">Salvar</button>
+    
+          <button id="editarContato" onclick="contatoEdita()" hidden>Editar</button>
+        </div>
+      </div>
+
+
+</div>

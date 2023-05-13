@@ -1,0 +1,37 @@
+<div class="container-fluid" style="padding: 100px">
+<!--   <div class="row">
+    <button onclick='openView("mapa");'>Mapa</button>
+  </div>
+ -->
+
+  <div class="row">
+    <button onclick='openViewTable("concessionaria",false);'>Nova Concessionaria</button>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="buscaConcessionaria">Busca Concessionaria</label>
+
+        <input type="text" class="form-control" id="buscaConcessionaria"
+          onkeyup="buscarTable('buscaConcessionaria','tabelaConcessionaria')">
+
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped" id="tabelaConcessionaria">
+    <thead>
+      <tr>
+        <th scope="col">Nome Concessionaria</th>
+        <th scope="col">Info Concessionaria</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaListaConcessionarias">
+
+    </tbody>
+  </table>
+
+
+</div>

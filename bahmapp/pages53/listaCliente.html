@@ -1,0 +1,41 @@
+<div class="container-fluid" style="padding: 100px">
+  <div class="row">
+    <button onclick='openView("mapa");'>Mapa</button>
+  </div>
+
+
+  <div class="row">
+    <button onclick='openView("cliente",false);'>Nova Cliente</button>
+  </div>
+
+
+  <div class="row">
+    <button onclick='openView("contato",false);'>Nova Cliente</button>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="buscaCliente">Busca Cliente</label>
+
+        <input type="text" class="form-control" id="buscaCliente"
+          onkeyup="buscarTable('buscaCliente','tabelaCliente')">
+
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped" id="tabelaCliente">
+    <thead>
+      <tr>
+        <th scope="col">Nome Cliente</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaListaClientes">
+
+    </tbody>
+  </table>
+
+
+</div>

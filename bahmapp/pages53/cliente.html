@@ -1,0 +1,28 @@
+<div class="container-fluid" style="padding: 100px">
+    <div class="row">
+        <button onclick='openView("listaCliente");'>Clientes</button>
+    </div>
+
+    <input id="idCliente" type="text" hidden />
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="nomeCliente">Nome Cliente</label>
+                <input type="text" class="form-control" id="nomeCliente" />
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+          <button id="salvar" onclick="clienteNovo()">Salvar</button>
+    
+          <button id="editar" onclick="clienteEdita()" hidden>Editar</button>
+        </div>
+      </div>
+
+
+</div>
