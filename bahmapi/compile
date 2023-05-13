@@ -1,11 +1,1 @@
 dotnet publish bahmapi.csproj -r linux-musl-x64 --output "linux64_musl" --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
-
-sudo docker-compose up -d --build
-
-flyctl launch
-
-flyctl deploy
-
-
-dotnet tool install --global dotnet-ef
-dotnet ef dbcontext scaffold "Server=localhost;DataBase=xxxxx;Uid=xxxx;Pwd=xxxx;" Pomelo.EntityFrameworkCore.MySql -o Entities -f -c DatabaseContext
