@@ -14,8 +14,8 @@ services:
       context: .
       dockerfile: Dockerfile
 
-    # networks:
-    #   - application
+    networks:
+      - application
 
-# networks:
-#   application:
+networks:
+  application:
