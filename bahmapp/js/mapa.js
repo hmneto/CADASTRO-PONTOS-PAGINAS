@@ -301,7 +301,7 @@ function mapaInteracao() {
   httpGet('/ApiMaps/Google').then(x=>{
     const scriptMaps = document.createElement('script')
     scriptMaps.src=`https://maps.googleapis.com/maps/api/js?key=${x.apiMaps}&callback=initMap`
-    document.body.appendChild(scriptMaps)
+    document.getElementById('content').appendChild(scriptMaps)
   })
 
 
