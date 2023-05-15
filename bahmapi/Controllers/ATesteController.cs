@@ -8,6 +8,8 @@ using bahmapi.Entities;
 using bahmapi.Dtos;
 using bahmapi.Services;
 using AutoMapper;
+using System.Text;
+
 namespace bahmapi.Controllers
 {
     [ApiController]
@@ -22,6 +24,7 @@ namespace bahmapi.Controllers
         public IIconeService iconeService;
         public IConcessionariaService concessionariaService;
         public IPaginaService paginaService;
+        private IImagemService imagemService;
         TokenService tokenService;
         public ATesteController(
             IUsuarioService _usuarioService,
@@ -29,7 +32,8 @@ namespace bahmapi.Controllers
             IIconeService _iconeService,
             IConcessionariaService _concessionariaService,
             IPaginaService _paginaService,
-            IClienteService _clienteService
+            IClienteService _clienteService,
+            IImagemService _imagemService
          )
         {
             usuarioService = _usuarioService;
@@ -38,6 +42,7 @@ namespace bahmapi.Controllers
             concessionariaService = _concessionariaService;
             paginaService = _paginaService;
             clienteService = _clienteService;
+            imagemService = _imagemService;
         }
 
 
@@ -147,10 +152,6 @@ namespace bahmapi.Controllers
         }
 
 
-
-
-
-
         [HttpGet]
         [Route("Foto")]
         [Authorize]
@@ -158,13 +159,12 @@ namespace bahmapi.Controllers
         {
             try
             {
-                // Imagem imagem2 = await _imagemService.Detalhes(id);
-                // string fotoBase64 = Encoding.UTF8.GetString(imagem2.BinarioImagem);
-                // String[] substrings = fotoBase64.Split(',');
-                // string header = substrings[0];
-                // string imagem = substrings[1];
-                // return File(imagem2.BinarioImagem, "image/png");
-                return Ok();
+                Imagem imagem2 = await imagemService.Detalhes(id);
+                string fotoBase64 = Encoding.UTF8.GetString(imagem2.BinarioImagem);
+                String[] substrings = fotoBase64.Split(',');
+                string header = substrings[0];
+                string imagem = substrings[1];
+                return File(imagem2.BinarioImagem, "image/png");
             }
             catch (Exception e)
             {
