@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Text;
 using bahmapi.Entities;
 using bahmapi.Middewares;
@@ -15,7 +16,7 @@ ConfigureServices(builder.Services);
 
 builder.Services.AddControllers();
 builder.Services.AddCors();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
