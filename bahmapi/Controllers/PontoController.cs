@@ -53,11 +53,11 @@ namespace bahmapi.Controllers
         {
             try
             {
-                pontoDto.PontoUsuarioId=_user.Id;
                 Ponto ponto = _mapper.Map<Ponto>(pontoDto);
-                ponto = await _pontoService.Novo(ponto);
-                pontoDto = _mapper.Map<PontoDto>(ponto);
-                return Ok(pontoDto);
+                ponto.PontoUsuarioId = user.Id;
+                var ponto2 = await _pontoService.Novo(ponto);
+                var pontoDto2 = _mapper.Map<PontoDto>(ponto2);
+                return Ok(pontoDto2);
             }
             catch (Exception e)
             {

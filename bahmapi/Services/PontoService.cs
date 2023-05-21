@@ -79,6 +79,9 @@ public partial class PontoService : IPontoService
 
     public async Task<Ponto> Novo(Ponto ponto)
     {
+        ponto.Pagina = _db.Pagina.Where(x=>x.IdPagina == ponto.PaginaId).FirstOrDefault();
+        ponto.Icone = _db.Icone.Where(x=>x.IdIcone == ponto.IconeId).FirstOrDefault();
+
         _db.Ponto.Add(ponto);
         await _db.SaveChangesAsync();
         return ponto;
