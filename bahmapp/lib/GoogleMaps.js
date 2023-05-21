@@ -75,7 +75,7 @@ function eventClickMap() {
     const { lat, lng } = latLgnii;
     point.setMap(null);
 
-    if(sessionStorage.getItem("loginProfile") != "admin") {
+    if(sessionStorage.getItem("loginProfile") == "admin") {
       point = createMark(
         getLatLngMaps(lat, lng)
       );
