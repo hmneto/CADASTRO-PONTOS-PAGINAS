@@ -260,27 +260,28 @@ namespace bahmapi.Entities
 
             modelBuilder.Entity<LogMapa>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.IdLogMapa)
+                    .HasName("PRIMARY");
 
                 entity.ToTable("log_mapa");
 
                 entity.HasIndex(e => e.UsuarioId)
                     .HasName("usuario_id");
 
-                entity.Property(e => e.DataHoraLogMapa)
-                    .HasColumnName("data_hora_log_mapa")
-                    .HasColumnType("datetime");
-
                 entity.Property(e => e.IdLogMapa)
                     .HasColumnName("id_log_mapa")
                     .HasColumnType("int(11)");
+
+                entity.Property(e => e.DataHoraLogMapa)
+                    .HasColumnName("data_hora_log_mapa")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.UsuarioId)
                     .HasColumnName("usuario_id")
                     .HasColumnType("int(11)");
 
                 entity.HasOne(d => d.Usuario)
-                    .WithMany()
+                    .WithMany(p => p.LogMapa)
                     .HasForeignKey(d => d.UsuarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("log_mapa_ibfk_1");

@@ -54,14 +54,18 @@ namespace bahmapi.Controllers
         [Route("MapsCount")]
         public async Task<ActionResult> MapsCount()
         {
+            try{
             // var usuario = await usuarioService.Detalhes(user.Id);
-            //var cliente = await clienteService.Detalhes(usuario.ClienteId);
+            // var cliente = await clienteService.Detalhes(usuario.ClienteId);
             // return Ok(new {ApiMaps=cliente.ChaveGoogleMaps.Trim()});
-            logMapaService.Novo(new LogMapa{
+            LogMapa log = await logMapaService.Novo(new LogMapa{
                 DataHoraLogMapa=DateTime.Now,
-                UsuarioId=user.Id
+                UsuarioId = user.Id
             });
-            return Ok();
+            return Ok(log);
+            }catch(Exception e){
+                return BadRequest(e.Message);
+            }
         }
     }
 }
