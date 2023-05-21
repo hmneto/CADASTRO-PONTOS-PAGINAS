@@ -300,8 +300,6 @@ function initMap(){
 
 function mapaInteracao() {
 
-  console.log(sessionStorage.getItem("loginProfile"))
-
   if(sessionStorage.getItem("loginProfile") != "admin") {
     document.getElementById('controlSavarPonto').style.display = 'none'
     document.getElementById('controlEditarPonto').style.display = 'none'
