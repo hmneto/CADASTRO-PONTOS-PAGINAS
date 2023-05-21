@@ -1,4 +1,6 @@
 #nullable disable
+using System.ComponentModel.DataAnnotations;
+
 
 using bahmapi.Entities;
 namespace bahmapi.Dtos
@@ -14,6 +16,11 @@ namespace bahmapi.Dtos
         public int IconeId { get; set; }
         public int PontoUsuarioId { get; set; }
 
+        [Required(ErrorMessage = "O campo Nome é obrigatório.")]
+        [MaxLength(50, ErrorMessage = "O campo Nome deve ter no máximo 50 caracteres.")]
+        public string ObservacaoPonto { get; set; }
+
+
         public virtual IconeDto Icone { get; set; }
 
 
@@ -23,3 +30,5 @@ namespace bahmapi.Dtos
         public int Zoom { get; set; }
     }
 }
+
+
