@@ -74,10 +74,15 @@ function eventClickMap() {
 
     const { lat, lng } = latLgnii;
     point.setMap(null);
-    point = createMark(
-      getLatLngMaps(lat, lng)
-    );
-    point.setMap(mapiii);
+
+    if(sessionStorage.getItem("loginProfile") != "admin") {
+      point = createMark(
+        getLatLngMaps(lat, lng)
+      );
+      point.setMap(mapiii);
+    }
+
+
 
     let infoWindow = new google.maps.InfoWindow({});
     point.addListener("click", () => {
