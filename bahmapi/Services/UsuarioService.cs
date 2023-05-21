@@ -2,7 +2,7 @@ using bahmapi.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace bahmapi.Services;
-// #nullable disable
+#nullable disable
 
 public interface IUsuarioService
 {

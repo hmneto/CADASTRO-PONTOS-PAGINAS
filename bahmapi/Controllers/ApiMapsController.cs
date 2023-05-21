@@ -1,4 +1,4 @@
-// #nullable disable
+#nullable disable
 using bahmapi.Entities;
 using bahmapi.Services;
 using Microsoft.AspNetCore.Authorization;
