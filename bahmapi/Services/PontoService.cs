@@ -81,6 +81,7 @@ public partial class PontoService : IPontoService
     {
         ponto.Pagina = _db.Pagina.Where(x=>x.IdPagina == ponto.PaginaId).FirstOrDefault();
         ponto.Icone = _db.Icone.Where(x=>x.IdIcone == ponto.IconeId).FirstOrDefault();
+        ponto.ObservacaoPonto = "te";
 
         _db.Ponto.Add(ponto);
         await _db.SaveChangesAsync();
