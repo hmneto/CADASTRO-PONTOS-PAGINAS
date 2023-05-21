@@ -299,6 +299,13 @@ function initMap(){
 
 
 function mapaInteracao() {
+
+  console.log(sessionStorage.getItem("loginProfile"))
+
+  if(sessionStorage.getItem("loginProfile") == "admin") {
+    document.getElementById('controlPaginas').style.display = 'none'
+  }
+
   httpGet('/ApiMaps/Google').then(x=>{
       console.log('api google maps')
       const scriptMaps = document.createElement('script')
