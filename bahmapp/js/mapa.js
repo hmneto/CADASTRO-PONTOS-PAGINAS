@@ -198,7 +198,7 @@ function goToPosition() {
   let lat, lng
 
   if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU DECIMAL'){
-    lat = convertDMStoDD(document.getElementById("latInput").value, true)
+    lat = document.getElementById("latInput").value
   }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO SEGUNDO'){
     lat = convertDMStoDD(document.getElementById("latInput").value, true)
   }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO'){
@@ -299,12 +299,12 @@ function initMap(){
 
 function mapaInteracao() {
   httpGet('/ApiMaps/Google').then(x=>{
-    const scriptMaps = document.createElement('script')
-    scriptMaps.src=`https://maps.googleapis.com/maps/api/js?key=${x.apiMaps}&callback=initMap`
-    document.getElementById('content').appendChild(scriptMaps)
+      console.log('api google maps')
+      const scriptMaps = document.createElement('script')
+      scriptMaps.src=`https://maps.googleapis.com/maps/api/js?key=${x.apiMaps}&callback=initMap`
+      document.getElementById('content').appendChild(scriptMaps)
+  
   })
-
-
 }
 
 
