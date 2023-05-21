@@ -7,12 +7,12 @@ using System.Collections.Generic;
 
 namespace bahmapi.Entities
 {
-    public partial class Imagem
+    public partial class LogMapa
     {
-        public int IdImagem { get; set; }
-        public byte[] BinarioImagem { get; set; }
-        public long TamanhoImagem { get; set; }
-        public string NomeImagem { get; set; }
-        public string ExtensaoImagem { get; set; }
+        public int IdLogMapa { get; set; }
+        public int UsuarioId { get; set; }
+        public DateTime DataHoraLogMapa { get; set; }
+
+        public virtual Usuario Usuario { get; set; }
     }
 }

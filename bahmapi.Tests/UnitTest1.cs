@@ -1,4 +1,4 @@
-#nullable disable
+// #nullable disable
 using AutoMapper;
 using bahmapi.Controllers;
 using bahmapi.Dtos;

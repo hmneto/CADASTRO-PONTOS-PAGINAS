@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
-#nullable disable
+// #nullable disable
 
 namespace bahmapi.Entities
 {
@@ -22,8 +22,10 @@ namespace bahmapi.Entities
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Concessionaria> Concessionaria { get; set; }
         public virtual DbSet<Contato> Contato { get; set; }
+        public virtual DbSet<EmailEnvio> EmailEnvio { get; set; }
         public virtual DbSet<Icone> Icone { get; set; }
         public virtual DbSet<Imagem> Imagem { get; set; }
+        public virtual DbSet<LogMapa> LogMapa { get; set; }
         public virtual DbSet<LogPagina> LogPagina { get; set; }
         public virtual DbSet<LogPonto> LogPonto { get; set; }
         public virtual DbSet<Pagina> Pagina { get; set; }
@@ -126,6 +128,57 @@ namespace bahmapi.Entities
                     .HasCollation("utf8_unicode_ci");
             });
 
+            modelBuilder.Entity<EmailEnvio>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("email_envio");
+
+                entity.Property(e => e.Acao)
+                    .IsRequired()
+                    .HasColumnName("acao")
+                    .HasColumnType("varchar(70)")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnName("email")
+                    .HasColumnType("varchar(70)")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.Host)
+                    .IsRequired()
+                    .HasColumnName("host")
+                    .HasColumnType("varchar(70)")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+
+                entity.Property(e => e.IdEmailEnviado)
+                    .HasColumnName("id_email_enviado")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Porta)
+                    .HasColumnName("porta")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Senha)
+                    .HasColumnName("senha")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Ssl)
+                    .HasColumnName("ssl")
+                    .HasColumnType("bit(1)");
+
+                entity.Property(e => e.Usuario)
+                    .IsRequired()
+                    .HasColumnName("usuario")
+                    .HasColumnType("varchar(70)")
+                    .HasCharSet("latin1")
+                    .HasCollation("latin1_swedish_ci");
+            });
+
             modelBuilder.Entity<Icone>(entity =>
             {
                 entity.HasKey(e => e.IdIcone)
@@ -203,6 +256,34 @@ namespace bahmapi.Entities
                 entity.Property(e => e.TamanhoImagem)
                     .HasColumnName("tamanho_imagem")
                     .HasColumnType("bigint(20)");
+            });
+
+            modelBuilder.Entity<LogMapa>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("log_mapa");
+
+                entity.HasIndex(e => e.UsuarioId)
+                    .HasName("usuario_id");
+
+                entity.Property(e => e.DataHoraLogMapa)
+                    .HasColumnName("data_hora_log_mapa")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.IdLogMapa)
+                    .HasColumnName("id_log_mapa")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.UsuarioId)
+                    .HasColumnName("usuario_id")
+                    .HasColumnType("int(11)");
+
+                entity.HasOne(d => d.Usuario)
+                    .WithMany()
+                    .HasForeignKey(d => d.UsuarioId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("log_mapa_ibfk_1");
             });
 
             modelBuilder.Entity<LogPagina>(entity =>

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using bahmapi.Entities;
 using bahmapi.Services;
 using Microsoft.AspNetCore.Http;
-#nullable disable
+// #nullable disable
 
 namespace bahmapi.Middewares
 {

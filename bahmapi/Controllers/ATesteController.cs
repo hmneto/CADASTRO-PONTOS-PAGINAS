@@ -1,4 +1,4 @@
-﻿#nullable disable
+﻿// #nullable disable
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -1,4 +1,4 @@
-#nullable disable
+// #nullable disable
 
 using bahmapi.Entities;
 namespace bahmapi.Dtos
