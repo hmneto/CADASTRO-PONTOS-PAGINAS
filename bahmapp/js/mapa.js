@@ -271,7 +271,7 @@ async function MontaDados(centerMap) {
     LatitudePonto: centro.lat,
     LongitudePonto: centro.lng,
     Zoom: getZoomMap(),
-    ObservacaoPonto : ""
+    ObservacaoPonto : "pontos"
   }).then(x => x.json());
   if (pontos == undefined) return
   mountPointsInTheMap(pontos);
