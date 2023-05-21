@@ -46,5 +46,15 @@ namespace bahmapi.Controllers
             var cliente = await clienteService.Detalhes(usuario.ClienteId);
             return Ok(new {ApiMaps=cliente.ChaveGoogleMaps.Trim()});
         }
+
+        [HttpGet]
+        [Route("MapsCount")]
+        public async Task<ActionResult> MapsCount()
+        {
+            var usuario = await usuarioService.Detalhes(user.Id);
+            //var cliente = await clienteService.Detalhes(usuario.ClienteId);
+            // return Ok(new {ApiMaps=cliente.ChaveGoogleMaps.Trim()});
+            return Ok();
+        }
     }
 }
