@@ -119,9 +119,9 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IPaginaService, PaginaService>();
     services.AddTransient<IIconeService,IconeService>();
     services.AddTransient<IConcessionariaService,ConcessionariaService>();
+    services.AddTransient<ILogMapaService,LogMapaService>();
     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     services.AddScoped<AuthenticatedUser>();
-    
 }
 
 public static class Secret
