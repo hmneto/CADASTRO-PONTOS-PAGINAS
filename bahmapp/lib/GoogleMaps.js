@@ -102,6 +102,20 @@ function getLatLongZoom() {
 function goToLatLngMap(lat, lng, zoom) {
   const latLng = getLatLngMaps(lat, lng);
 
+
+  window.pointSearch = new google.maps.Marker({});
+
+
+  window.pointSearch.setMap(null);
+
+
+  window.pointSearch = createMark(
+    getLatLngMaps(lat, lng),'./images/TRUCK.png'
+  );
+  window.pointSearch.setMap(mapiii);
+
+
+
   mapiii.panTo(latLng);
   mapiii.setZoom(Number(zoom));
 }
