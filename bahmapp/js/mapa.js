@@ -303,7 +303,10 @@ function mapaInteracao() {
   console.log(sessionStorage.getItem("loginProfile"))
 
   if(sessionStorage.getItem("loginProfile") == "admin") {
+    document.getElementById('controlSavarPonto').style.display = 'none'
+    document.getElementById('controlEditarPonto').style.display = 'none'
     document.getElementById('controlPaginas').style.display = 'none'
+    document.getElementById('controlImagens').style.display = 'none'
   }
 
   httpGet('/ApiMaps/Google').then(x=>{
