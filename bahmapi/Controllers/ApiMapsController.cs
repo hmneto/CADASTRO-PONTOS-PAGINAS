@@ -22,18 +22,21 @@ namespace bahmapi.Controllers
         public readonly IMapper mapper;
         private readonly IClienteService clienteService;
         private readonly IUsuarioService usuarioService;
+        private readonly ILogMapaService logMapaService;
 
         public ApiMapsController(
             IMapper _mapper,
             AuthenticatedUser _user,
             IClienteService _clienteService,
-            IUsuarioService _usuarioService
+            IUsuarioService _usuarioService,
+            ILogMapaService _logMapaService
          )
         {
             user = _user;
             mapper = _mapper;
             clienteService = _clienteService;
             usuarioService = _usuarioService;
+            logMapaService = _logMapaService;
         }
 
 
@@ -51,9 +54,13 @@ namespace bahmapi.Controllers
         [Route("MapsCount")]
         public async Task<ActionResult> MapsCount()
         {
-            var usuario = await usuarioService.Detalhes(user.Id);
+            // var usuario = await usuarioService.Detalhes(user.Id);
             //var cliente = await clienteService.Detalhes(usuario.ClienteId);
             // return Ok(new {ApiMaps=cliente.ChaveGoogleMaps.Trim()});
+            logMapaService.Novo(new LogMapa{
+                DataHoraLogMapa=DateTime.Now,
+                UsuarioId=user.Id
+            });
             return Ok();
         }
     }
