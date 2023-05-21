@@ -54,7 +54,7 @@ namespace bahmapi.Controllers
             try
             {
                 Ponto ponto = _mapper.Map<Ponto>(pontoDto);
-                ponto.PontoUsuarioId = user.Id;
+                ponto.PontoUsuarioId = _user.Id;
                 var ponto2 = await _pontoService.Novo(ponto);
                 var pontoDto2 = _mapper.Map<PontoDto>(ponto2);
                 return Ok(pontoDto2);
