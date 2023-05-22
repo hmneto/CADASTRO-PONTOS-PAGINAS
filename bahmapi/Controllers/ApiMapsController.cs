@@ -47,25 +47,29 @@ namespace bahmapi.Controllers
         {
             var usuario = await usuarioService.Detalhes(user.Id);
             var cliente = await clienteService.Detalhes(usuario.ClienteId);
-            return Ok(new {ApiMaps=cliente.ChaveGoogleMaps.Trim()});
+            return Ok(new { ApiMaps = cliente.ChaveGoogleMaps.Trim() });
         }
 
         [HttpGet]
         [Route("MapsCount")]
         public async Task<ActionResult> MapsCount()
         {
-            try{
-            // var usuario = await usuarioService.Detalhes(user.Id);
-            // var cliente = await clienteService.Detalhes(usuario.ClienteId);
-            // return Ok(new {ApiMaps=cliente.ChaveGoogleMaps.Trim()});
+            try
+            {
+                // var usuario = await usuarioService.Detalhes(user.Id);
+                // var cliente = await clienteService.Detalhes(usuario.ClienteId);
+                // return Ok(new {ApiMaps=cliente.ChaveGoogleMaps.Trim()});
 
-            
-            LogMapa log = await logMapaService.Novo(new LogMapa{
-                DataHoraLogMapa=DateTime.Now.AddHours(-3),
-                UsuarioId = user.Id
-            });
-            return Ok(log);
-            }catch(Exception e){
+
+                LogMapa log = await logMapaService.Novo(new LogMapa
+                {
+                    DataHoraLogMapa = DateTime.Now.AddHours(-3),
+                    UsuarioId = user.Id
+                });
+                return Ok(log);
+            }
+            catch (Exception e)
+            {
                 return BadRequest(e.Message);
             }
         }
