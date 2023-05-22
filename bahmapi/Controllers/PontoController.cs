@@ -16,7 +16,6 @@ namespace bahmapi.Controllers
     [ApiController]
     [Route("[controller]")]
     [Authorize]
-    [Authorize(Roles = "admin")]
     public class PontoController : ControllerBase
     {
         private readonly AuthenticatedUser _user;
@@ -50,6 +49,7 @@ namespace bahmapi.Controllers
 
         [HttpPost]
         [Route("Novo")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Novo(PontoDto pontoDto)
         {
             try
@@ -68,6 +68,7 @@ namespace bahmapi.Controllers
 
         [HttpPut]
         [Route("Edita")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Edita(PontoDto pontoDto)
         {
             try
@@ -86,6 +87,7 @@ namespace bahmapi.Controllers
 
         [HttpGet]
         [Route("Detalhes")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Detalhes([FromQuery] int id)
         {
             try
@@ -102,6 +104,7 @@ namespace bahmapi.Controllers
 
         [HttpGet]
         [Route("ListaTodos")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> ListaTodos()
         {
             List<Ponto> pontos = await _pontoService.ListaTodos();
@@ -111,6 +114,7 @@ namespace bahmapi.Controllers
 
         [HttpDelete]
         [Route("Delete")]
+        [Authorize(Roles = "admin")]
         public ActionResult Delete([FromQuery] int id)
         {
             try
