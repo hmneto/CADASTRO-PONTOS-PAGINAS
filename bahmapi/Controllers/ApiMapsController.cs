@@ -61,7 +61,7 @@ namespace bahmapi.Controllers
 
             
             LogMapa log = await logMapaService.Novo(new LogMapa{
-                DataHoraLogMapa=DateTime.Now,
+                DataHoraLogMapa=DateTime.Now.AddHours(-3),
                 UsuarioId = user.Id
             });
             return Ok(log);
