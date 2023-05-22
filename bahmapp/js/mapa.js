@@ -308,11 +308,11 @@ function mapaInteracao() {
   }
 
   httpGet('/ApiMaps/Google').then(x=>{
-      console.log('api google maps')
+    httpGet('/ApiMaps/MapsCount').then(y=>{
       const scriptMaps = document.createElement('script')
       scriptMaps.src=`https://maps.googleapis.com/maps/api/js?key=${x.apiMaps}&callback=initMap`
       document.getElementById('content').appendChild(scriptMaps)
-  
+    })
   })
 }
 
