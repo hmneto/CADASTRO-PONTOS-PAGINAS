@@ -39,6 +39,7 @@ namespace bahmapi.Controllers
 
         [HttpPost]
         [Route("Pontos")]
+        [Authorize(Roles = "user")]
         public async Task<ActionResult> Pontos([FromBody] PontoDto pontoDto)
         {
             Ponto ponto = _mapper.Map<Ponto>(pontoDto);
