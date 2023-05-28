@@ -3,6 +3,9 @@
 // const linkApi = "https://localhost:5001"
 const linkApi = "https://bahm.fly.dev"
 // const linkApi = "http://localhost"
+
+window.pontos = []
+
 let dadosPonto = null
 
 const pontosMaps = []

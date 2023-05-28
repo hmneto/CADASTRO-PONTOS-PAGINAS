@@ -111,8 +111,13 @@ function setPositionsInInputs(lat, lng, zoom) {
 
 
 
-function mountPointsInTheMap(list, centro) {
-  console.log(centro)
+function mountPointsInTheMap(list, centro, zoom) {
+
+  // if(window.pontos[`${Math.round(centro.lat)}`+`${Math.round(centro.lng)}`+`${zoom}`] != undefined)
+  console.log(window.pontos[`${Math.round(centro.lat)}`+`${Math.round(centro.lng)}`+`${zoom}`] )
+
+
+  window.pontos[`${Math.round(centro.lat)}`+`${Math.round(centro.lng)}`+`${zoom}`] = list
 
   // for (let index = 0; index < pontosMaps.length; index++) {
   //   pontosMaps[index].setMap(null)
@@ -139,7 +144,7 @@ function mountPointsInTheMap(list, centro) {
 
 
       const markerId = point.get('id');
-      console.log(markerId)
+      //console.log(markerId)
 
       dadosPonto = element
       infoWindow.close();
@@ -277,7 +282,7 @@ async function MontaDados(centerMap) {
     ObservacaoPonto: "pontos"
   }).then(x => x.json());
   if (pontos == undefined) return
-  mountPointsInTheMap(pontos, centro);
+  mountPointsInTheMap(pontos, centro,zoom);
 }
 
 
