@@ -15,17 +15,18 @@ class CenterMap {
     let retorno_dados;
 
     if (getZoomMap() >= zoom) {
-      latMax = Math.round(getCenterLatMap() - ditancia);
-      latMin = Math.ceil(getCenterLatMap() + ditancia);
-      longMax = Math.round(getCenterLngMap() - ditancia);
-      longMin = Math.ceil(getCenterLngMap() + ditancia);
+      latMax = Math.round(Number(getCenterLatMap())- Math.abs(ditancia));
+      latMin = Math.ceil(Number(getCenterLatMap()) + Math.abs(ditancia));
+      longMax = Math.round(Number(getCenterLngMap()) - Math.abs(ditancia));
+      longMin = Math.ceil(Number(getCenterLngMap())+ Math.abs(ditancia));
 
       retorno_dados =
-        this._latMax !== latMax ||
-        this._latMin !== latMin ||
-        this._longMax !== longMax ||
+        this._latMax !== latMax &&
+        this._latMin !== latMin &&
+        this._longMax !== longMax &&
         this._longMin !== longMin;
       if (retorno_dados) {
+
         this._latMax = latMax;
         this._latMin = latMin;
         this._longMax = longMax;
@@ -82,24 +83,24 @@ function savePositionsInStorage(lat, lng, zoom) {
 function setPositionsInInputs(lat, lng, zoom) {
 
 
-  if (document.getElementById("latInput")){
+  if (document.getElementById("latInput")) {
 
-    if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU DECIMAL'){
+    if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU DECIMAL') {
       document.getElementById("latInput").value = lat;
-    }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO SEGUNDO'){
+    } else if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU MINUTO SEGUNDO') {
       document.getElementById("latInput").value = convertDDtoDMS(lat, true);
-    }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO'){
+    } else if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU MINUTO') {
       document.getElementById("latInput").value = convertDDtoDMM(lat, "lat")
     }
   }
 
-  if (document.getElementById("longInput")){
+  if (document.getElementById("longInput")) {
 
-    if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU DECIMAL'){
+    if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU DECIMAL') {
       document.getElementById("longInput").value = lng;
-    }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO SEGUNDO'){
+    } else if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU MINUTO SEGUNDO') {
       document.getElementById("longInput").value = convertDDtoDMS(lng, false);
-    }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO'){
+    } else if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU MINUTO') {
       document.getElementById("longInput").value = convertDDtoDMM(lng, "lon")
     }
 
@@ -110,24 +111,26 @@ function setPositionsInInputs(lat, lng, zoom) {
 
 
 
-function mountPointsInTheMap(list) {
-  for (let index = 0; index < pontosMaps.length; index++) {
-    pontosMaps[index].setMap(null)
-  }
+function mountPointsInTheMap(list, centro) {
+  console.log(centro)
+
+  // for (let index = 0; index < pontosMaps.length; index++) {
+  //   pontosMaps[index].setMap(null)
+  // }
 
   for (let index = 0; index < list.length; index++) {
     const element = list[index];
-    
+
 
     let point = createMark(
       getLatLngMaps(element.latitudePonto, element.longitudePonto), element.icone.linkIcone.indexOf("http") === -1 ? linkApi + "/imagem/Imagem?i=" + element.icone.linkIcone
-        : element.icone.linkIcone,
-        element.idPonto
+      : element.icone.linkIcone,
+      element.idPonto
     )
 
     pontosMaps.push(point)
 
-    
+
     // point.id = element.id
     point.setMap(mapiii);
     let infoWindow = new google.maps.InfoWindow({});
@@ -135,8 +138,8 @@ function mountPointsInTheMap(list) {
 
 
 
-    const markerId = point.get('id');
-    console.log(markerId)
+      const markerId = point.get('id');
+      console.log(markerId)
 
       dadosPonto = element
       infoWindow.close();
@@ -197,20 +200,20 @@ function fitMap() {
 function goToPosition() {
   let lat, lng
 
-  if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU DECIMAL'){
+  if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU DECIMAL') {
     lat = document.getElementById("latInput").value
-  }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO SEGUNDO'){
+  } else if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU MINUTO SEGUNDO') {
     lat = convertDMStoDD(document.getElementById("latInput").value, true)
-  }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO'){
+  } else if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU MINUTO') {
     lat = convertDMtoDD(document.getElementById("latInput").value)
   }
 
 
-  if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU DECIMAL'){
+  if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU DECIMAL') {
     lng = document.getElementById("longInput").value
-  }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO SEGUNDO'){
+  } else if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU MINUTO SEGUNDO') {
     lng = convertDMStoDD(document.getElementById("longInput").value, false)
-  }else if(document.getElementById('tipoPosicaoSatelite').value  == 'GRAU MINUTO'){
+  } else if (document.getElementById('tipoPosicaoSatelite').value == 'GRAU MINUTO') {
     lng = convertDMtoDD(document.getElementById("longInput").value)
   }
 
@@ -265,20 +268,20 @@ async function MontaDados(centerMap) {
   const { lat, lng, zoom } = getLatLongZoom();
   savePositionsInStorage(lat, lng, zoom);
   setPositionsInInputs(lat, lng, zoom);
-  const centro = centerMap.centerMap(8, 2);
+  const centro = centerMap.centerMap(8, 5);
   if (!centro) return;
   const pontos = await httpPost("/ponto/Pontos", {
     LatitudePonto: centro.lat,
     LongitudePonto: centro.lng,
     Zoom: getZoomMap(),
-    ObservacaoPonto : "pontos"
+    ObservacaoPonto: "pontos"
   }).then(x => x.json());
   if (pontos == undefined) return
-  mountPointsInTheMap(pontos);
+  mountPointsInTheMap(pontos, centro);
 }
 
 
-function initMap(){
+function initMap() {
   const centerMap = new CenterMap()
   setUpInitalStorage();
   myMap();
@@ -300,17 +303,17 @@ function initMap(){
 
 function mapaInteracao() {
 
-  if(sessionStorage.getItem("loginProfile") != "admin") {
+  if (sessionStorage.getItem("loginProfile") != "admin") {
     document.getElementById('controlSavarPonto').style.display = 'none'
     document.getElementById('controlEditarPonto').style.display = 'none'
     document.getElementById('controlPaginas').style.display = 'none'
     document.getElementById('controlImagens').style.display = 'none'
   }
 
-  httpGet('/ApiMaps/Google').then(x=>{
-    httpGet('/ApiMaps/MapsCount').then(y=>{
+  httpGet('/ApiMaps/Google').then(x => {
+    httpGet('/ApiMaps/MapsCount').then(y => {
       const scriptMaps = document.createElement('script')
-      scriptMaps.src=`https://maps.googleapis.com/maps/api/js?key=${x.apiMaps}&callback=initMap`
+      scriptMaps.src = `https://maps.googleapis.com/maps/api/js?key=${x.apiMaps}&callback=initMap`
       document.getElementById('content').appendChild(scriptMaps)
     })
   })
@@ -325,7 +328,7 @@ function convertDMStoDD(dms) {
   var min = parseInt(parts[1]); // Obtém os minutos
   var sec = parseFloat(parts[2]); // Obtém os segundos (como um número decimal)
   var sign = /[swSW]/.test(dms) ? -1 : 1; // Define o sinal com base no hemisfério
-  return sign * (deg + min/60 + sec/3600); // Calcula a coordenada em graus decimais
+  return sign * (deg + min / 60 + sec / 3600); // Calcula a coordenada em graus decimais
 }
 
 // Exemplo de uso:
@@ -342,7 +345,7 @@ function convertDDtoDMS(dd, isLatitude) {
   var absDd = Math.abs(dd); // Remove o sinal para trabalhar com valores positivos
   var deg = Math.floor(absDd);
   var min = Math.floor((absDd - deg) * 60);
-  var sec = ((absDd - deg - min/60) * 3600).toFixed(2);
+  var sec = ((absDd - deg - min / 60) * 3600).toFixed(2);
   return deg + "°" + min + "'" + sec + '"' + sign; // Concatena o sinal no final da string
 }
 
@@ -403,14 +406,14 @@ function convertDDtoDMM(dd, type) {
   var min = (absDd - deg) * 60; // Converte a parte decimal em minutos
   var formattedMin = min.toFixed(3); // Formata os minutos com 3 casas decimais
   var direction = "";
-  
+
   // Verifica se é uma latitude ou longitude e determina a direção correta
   if (type === "lat") {
     direction = dd >= 0 ? "N" : "S";
   } else if (type === "lon") {
     direction = dd >= 0 ? "E" : "W";
   }
-  
+
   return deg + "°" + formattedMin + "'" + direction; // Concatena a string com o sinal, os graus e minutos formatados e a direção
 }
 
