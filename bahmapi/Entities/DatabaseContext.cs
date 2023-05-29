@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
-#nullable disable
+// #nullable disable
 
 namespace bahmapi.Entities
 {
@@ -252,10 +252,6 @@ namespace bahmapi.Entities
                     .HasColumnType("varchar(150)")
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
-
-                entity.Property(e => e.TamanhoImagem)
-                    .HasColumnName("tamanho_imagem")
-                    .HasColumnType("bigint(20)");
             });
 
             modelBuilder.Entity<LogMapa>(entity =>
