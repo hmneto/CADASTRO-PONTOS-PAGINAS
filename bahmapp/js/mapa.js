@@ -15,10 +15,10 @@ class CenterMap {
     let retorno_dados;
 
     if (getZoomMap() >= zoom) {
-      latMax = Math.round(Number(getCenterLatMap())- Math.abs(ditancia));
+      latMax = Math.round(Number(getCenterLatMap()) - Math.abs(ditancia));
       latMin = Math.ceil(Number(getCenterLatMap()) + Math.abs(ditancia));
       longMax = Math.round(Number(getCenterLngMap()) - Math.abs(ditancia));
-      longMin = Math.ceil(Number(getCenterLngMap())+ Math.abs(ditancia));
+      longMin = Math.ceil(Number(getCenterLngMap()) + Math.abs(ditancia));
 
       retorno_dados =
         this._latMax !== latMax &&
@@ -38,6 +38,10 @@ class CenterMap {
       return {
         lat: getCenterLatMap(),
         lng: getCenterLngMap(),
+        latMax: this._latMax,
+        latMin: this._latMin,
+        longMax: this._longMax,
+        longMin: this._longMin
       };
     else return null;
   }
@@ -113,39 +117,31 @@ function setPositionsInInputs(lat, lng, zoom) {
 
 function mountPointsInTheMap(list, centro, zoom) {
 
-  // if(window.pontos[`${Math.round(centro.lat)}`+`${Math.round(centro.lng)}`+`${zoom}`] != undefined)
-  console.log(window.pontos[`${Math.round(centro.lat)}`+`${Math.round(centro.lng)}`+`${zoom}`] )
-
-
-  window.pontos[`${Math.round(centro.lat)}`+`${Math.round(centro.lng)}`+`${zoom}`] = list
-
-  // for (let index = 0; index < pontosMaps.length; index++) {
-  //   pontosMaps[index].setMap(null)
-  // }
-
   for (let index = 0; index < list.length; index++) {
     const element = list[index];
 
+    const linkFormatadoIcone = element.icone.linkIcone.indexOf("http") === -1 ?
+      linkApi + "/imagem/Imagem?i=" + element.icone.linkIcone :
+      element.icone.linkIcone
 
     let point = createMark(
-      getLatLngMaps(element.latitudePonto, element.longitudePonto), element.icone.linkIcone.indexOf("http") === -1 ? linkApi + "/imagem/Imagem?i=" + element.icone.linkIcone
-      : element.icone.linkIcone,
+      getLatLngMaps(element.latitudePonto, element.longitudePonto),
+      linkFormatadoIcone,
       element.idPonto
     )
 
-    pontosMaps.push(point)
 
+    if (pontosMaps.filter((ponto) => ponto.latitudePonto == element.latitudePonto && ponto.longitudePonto === element.longitudePonto).length < 1)
+      pontosMaps.push({
+        point,
+        latitudePonto: element.latitudePonto,
+        longitudePonto: element.longitudePonto
+      })
 
-    // point.id = element.id
     point.setMap(mapiii);
     let infoWindow = new google.maps.InfoWindow({});
     point.addListener("click", () => {
-
-
-
       const markerId = point.get('id');
-      //console.log(markerId)
-
       dadosPonto = element
       infoWindow.close();
       infoWindow = new google.maps.InfoWindow({
@@ -169,6 +165,8 @@ function mountPointsInTheMap(list, centro, zoom) {
       infoWindow.open(this.map, point);
     });
   }
+
+
 }
 
 
@@ -282,7 +280,7 @@ async function MontaDados(centerMap) {
     ObservacaoPonto: "pontos"
   }).then(x => x.json());
   if (pontos == undefined) return
-  mountPointsInTheMap(pontos, centro,zoom);
+  mountPointsInTheMap(pontos, centro, zoom);
 }
 
 
