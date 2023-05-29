@@ -104,7 +104,7 @@ function mountPointsInTheMap(list, centro, zoom) {
             element.longitudePonto
           ),
         });
-  
+
         const div = document.createElement("div");
         const text = document.createElement("text");
         text.innerHTML = element.nomePonto;
@@ -114,13 +114,10 @@ function mountPointsInTheMap(list, centro, zoom) {
           if (element.icone.acaoIcone === "NÃO") return;
           openView("paginaMapa", false, element.paginaId)
         });
-  
+
         infoWindow.setContent(div);
         infoWindow.open(this.map, point);
       });
-
-
-      
     }
 
   }
