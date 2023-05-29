@@ -81,14 +81,18 @@ function mountPointsInTheMap(list, centro, zoom) {
     )
 
 
-    if (pontosMaps.filter((ponto) => ponto.latitudePonto == element.latitudePonto && ponto.longitudePonto === element.longitudePonto).length < 1)
+    if (pontosMaps.filter((ponto) => ponto.latitudePonto == element.latitudePonto && ponto.longitudePonto === element.longitudePonto).length < 1) {
+
+
+
       pontosMaps.push({
         point,
         latitudePonto: element.latitudePonto,
         longitudePonto: element.longitudePonto
       })
 
-    point.setMap(mapiii);
+      point.setMap(mapiii);
+    }
     let infoWindow = new google.maps.InfoWindow({});
     point.addListener("click", () => {
       const markerId = point.get('id');
@@ -115,6 +119,8 @@ function mountPointsInTheMap(list, centro, zoom) {
       infoWindow.open(this.map, point);
     });
   }
+
+
 
 
 }
