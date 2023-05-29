@@ -80,49 +80,41 @@ function mountPointsInTheMap(list, centro, zoom) {
       element.idPonto
     )
 
-    let infoWindow = new google.maps.InfoWindow({});
 
-    if (pontosMaps.filter((ponto) => ponto.latitudePonto == element.latitudePonto && ponto.longitudePonto === element.longitudePonto).length < 1) {
-
-
-
+    if (pontosMaps.filter((ponto) => ponto.latitudePonto == element.latitudePonto && ponto.longitudePonto === element.longitudePonto).length < 1)
       pontosMaps.push({
         point,
         latitudePonto: element.latitudePonto,
         longitudePonto: element.longitudePonto
       })
 
-      point.setMap(mapiii);
-
-      point.addListener("click", () => {
-        const markerId = point.get('id');
-        dadosPonto = element
-        infoWindow.close();
-        infoWindow = new google.maps.InfoWindow({
-          position: getLatLngMaps(
-            element.latitudePonto,
-            element.longitudePonto
-          ),
-        });
-
-        const div = document.createElement("div");
-        const text = document.createElement("text");
-        text.innerHTML = element.nomePonto;
-        div.appendChild(text);
-        if (element.tipo_icone !== "KM") text.style.cursor = "pointer";
-        text.addEventListener("click", async function () {
-          if (element.icone.acaoIcone === "NÃO") return;
-          openView("paginaMapa", false, element.paginaId)
-        });
-
-        infoWindow.setContent(div);
-        infoWindow.open(this.map, point);
+    point.setMap(mapiii);
+    let infoWindow = new google.maps.InfoWindow({});
+    point.addListener("click", () => {
+      const markerId = point.get('id');
+      dadosPonto = element
+      infoWindow.close();
+      infoWindow = new google.maps.InfoWindow({
+        position: getLatLngMaps(
+          element.latitudePonto,
+          element.longitudePonto
+        ),
       });
-    }
 
+      const div = document.createElement("div");
+      const text = document.createElement("text");
+      text.innerHTML = element.nomePonto;
+      div.appendChild(text);
+      if (element.tipo_icone !== "KM") text.style.cursor = "pointer";
+      text.addEventListener("click", async function () {
+        if (element.icone.acaoIcone === "NÃO") return;
+        openView("paginaMapa", false, element.paginaId)
+      });
+
+      infoWindow.setContent(div);
+      infoWindow.open(this.map, point);
+    });
   }
-
-
 
 
 }
