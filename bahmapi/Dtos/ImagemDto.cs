@@ -11,7 +11,6 @@ namespace bahmapi.Dtos
     {
         public int IdImagem { get; set; }
         public byte[] BinarioImagem { get; set; }
-        public long TamanhoImagem { get; set; }
         public string NomeImagem { get; set; }
         public string ExtensaoImagem { get; set; }
         public string FotoString { get; set; }

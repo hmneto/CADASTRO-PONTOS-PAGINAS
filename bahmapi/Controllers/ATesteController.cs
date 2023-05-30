@@ -68,8 +68,7 @@ namespace bahmapi.Controllers
                     {
                         BinarioImagem = data,
                         ExtensaoImagem = fi.Extension,
-                        NomeImagem = fi.Name,
-                        TamanhoImagem = fi.Length
+                        NomeImagem = fi.Name
                     });
                     await BahmDbContext.SaveChangesAsync();
 
@@ -194,8 +193,7 @@ namespace bahmapi.Controllers
                     {
                         BinarioImagem = data,
                         ExtensaoImagem = fi.Extension,
-                        NomeImagem = fi.Name,
-                        TamanhoImagem = fi.Length
+                        NomeImagem = fi.Name
                     });
                     await BahmDbContext.SaveChangesAsync();
 
