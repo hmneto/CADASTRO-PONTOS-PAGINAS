@@ -29,7 +29,6 @@ namespace AutoMapperUserProfile
 
             CreateMap<Imagem, ImagemDto>()
                 .ForMember(x => x.BinarioImagem, opt => opt.Ignore())
-                .ForMember(x => x.TamanhoImagem, opt => opt.Ignore())
                 .ForMember(x => x.ExtensaoImagem, opt => opt.Ignore())
                 .ForMember(x => x.FotoString, opt => opt.Ignore());
 
