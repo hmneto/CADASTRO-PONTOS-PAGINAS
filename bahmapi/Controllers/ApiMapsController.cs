@@ -89,9 +89,6 @@ namespace bahmapi.Controllers
             try
             {
                 Ponto ponto = await _pontoService.Detalhes(PontoId);
-
-                Console.WriteLine(ponto.Pagina.IdPagina);
-
                 if (ponto.Pagina.IdPagina == 0)
                 {
                     var logIconeZero = await _logIconeZeroService.Novo(new LogIconeZero
