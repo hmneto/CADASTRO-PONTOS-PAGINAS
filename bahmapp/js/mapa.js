@@ -108,6 +108,10 @@ function mountPointsInTheMap(list, centro, zoom) {
       if (element.tipo_icone !== "KM") text.style.cursor = "pointer";
       text.addEventListener("click", async function () {
         if (element.icone.acaoIcone === "NÃO") return;
+
+        httpGet('/ApiMaps/IconePaginaZero?PontoId='+element.idPonto).then(y => { console.log(y) })
+
+
         openView("paginaMapa", false, element.paginaId)
       });
 

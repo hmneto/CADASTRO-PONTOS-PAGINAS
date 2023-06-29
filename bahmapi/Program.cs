@@ -31,7 +31,7 @@ builder.Services.AddTransient<EmailService>();
 byte[] key = Encoding.ASCII.GetBytes(Secret.SecretString);
 
 
-builder.Services.AddCors(p=>p.AddPolicy("corspolicy",build=>
+builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
 {
     build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 }));
@@ -117,9 +117,11 @@ void ConfigureServices(IServiceCollection services)
     services.AddTransient<IClienteService, ClienteService>();
     services.AddTransient<IImagemService, ImagemService>();
     services.AddTransient<IPaginaService, PaginaService>();
-    services.AddTransient<IIconeService,IconeService>();
-    services.AddTransient<IConcessionariaService,ConcessionariaService>();
-    services.AddTransient<ILogMapaService,LogMapaService>();
+    services.AddTransient<IPontoService, PontoService>();
+    services.AddTransient<IIconeService, IconeService>();
+    services.AddTransient<IConcessionariaService, ConcessionariaService>();
+    services.AddTransient<ILogMapaService, LogMapaService>();
+    services.AddTransient<ILogIconeZeroService, LogIconeZeroService>();
     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     services.AddScoped<AuthenticatedUser>();
 }

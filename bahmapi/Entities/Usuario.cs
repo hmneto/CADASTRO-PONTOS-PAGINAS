@@ -11,6 +11,7 @@ namespace bahmapi.Entities
     {
         public Usuario()
         {
+            LogIconeZero = new HashSet<LogIconeZero>();
             LogMapa = new HashSet<LogMapa>();
             LogPagina = new HashSet<LogPagina>();
             LogPonto = new HashSet<LogPonto>();
@@ -26,6 +27,7 @@ namespace bahmapi.Entities
         public string PerfilUsuario { get; set; }
 
         public virtual Cliente Cliente { get; set; }
+        public virtual ICollection<LogIconeZero> LogIconeZero { get; set; }
         public virtual ICollection<LogMapa> LogMapa { get; set; }
         public virtual ICollection<LogPagina> LogPagina { get; set; }
         public virtual ICollection<LogPonto> LogPonto { get; set; }

@@ -9,6 +9,11 @@ namespace bahmapi.Entities
 {
     public partial class Ponto
     {
+        public Ponto()
+        {
+            LogIconeZero = new HashSet<LogIconeZero>();
+        }
+
         public int IdPonto { get; set; }
         public string NomePonto { get; set; }
         public float LatitudePonto { get; set; }
@@ -21,5 +26,6 @@ namespace bahmapi.Entities
         public virtual Icone Icone { get; set; }
         public virtual Pagina Pagina { get; set; }
         public virtual Usuario PontoUsuario { get; set; }
+        public virtual ICollection<LogIconeZero> LogIconeZero { get; set; }
     }
 }

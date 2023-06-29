@@ -25,6 +25,7 @@ namespace bahmapi.Entities
         public virtual DbSet<EmailEnvio> EmailEnvio { get; set; }
         public virtual DbSet<Icone> Icone { get; set; }
         public virtual DbSet<Imagem> Imagem { get; set; }
+        public virtual DbSet<LogIconeZero> LogIconeZero { get; set; }
         public virtual DbSet<LogMapa> LogMapa { get; set; }
         public virtual DbSet<LogPagina> LogPagina { get; set; }
         public virtual DbSet<LogPonto> LogPonto { get; set; }
@@ -252,6 +253,50 @@ namespace bahmapi.Entities
                     .HasColumnType("varchar(150)")
                     .HasCharSet("latin1")
                     .HasCollation("latin1_swedish_ci");
+            });
+
+            modelBuilder.Entity<LogIconeZero>(entity =>
+            {
+                entity.HasKey(e => e.IdLogIconeZero)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("log_icone_zero");
+
+                entity.HasIndex(e => e.PontoId)
+                    .HasName("ponto_id");
+
+                entity.HasIndex(e => e.UsuarioId)
+                    .HasName("usuario_id");
+
+                entity.Property(e => e.IdLogIconeZero)
+                    .HasColumnName("id_log_icone_zero")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.DataHora)
+                    .HasColumnName("data_hora")
+                    .HasColumnType("timestamp")
+                    .HasDefaultValueSql("current_timestamp()")
+                    .ValueGeneratedOnAddOrUpdate();
+
+                entity.Property(e => e.PontoId)
+                    .HasColumnName("ponto_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.UsuarioId)
+                    .HasColumnName("usuario_id")
+                    .HasColumnType("int(11)");
+
+                entity.HasOne(d => d.Ponto)
+                    .WithMany(p => p.LogIconeZero)
+                    .HasForeignKey(d => d.PontoId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("log_icone_zero_ibfk_1");
+
+                entity.HasOne(d => d.Usuario)
+                    .WithMany(p => p.LogIconeZero)
+                    .HasForeignKey(d => d.UsuarioId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("log_icone_zero_ibfk_2");
             });
 
             modelBuilder.Entity<LogMapa>(entity =>

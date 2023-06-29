@@ -23,13 +23,18 @@ namespace bahmapi.Controllers
         private readonly IClienteService clienteService;
         private readonly IUsuarioService usuarioService;
         private readonly ILogMapaService logMapaService;
+        private readonly ILogIconeZeroService _logIconeZeroService;
+        private readonly IPontoService _pontoService;
+
 
         public ApiMapsController(
             IMapper _mapper,
             AuthenticatedUser _user,
             IClienteService _clienteService,
             IUsuarioService _usuarioService,
-            ILogMapaService _logMapaService
+            ILogMapaService _logMapaService,
+            ILogIconeZeroService logIconeZeroService,
+            IPontoService pontoService
          )
         {
             user = _user;
@@ -37,6 +42,8 @@ namespace bahmapi.Controllers
             clienteService = _clienteService;
             usuarioService = _usuarioService;
             logMapaService = _logMapaService;
+            _logIconeZeroService = logIconeZeroService;
+            _pontoService = pontoService;
         }
 
 
@@ -67,6 +74,37 @@ namespace bahmapi.Controllers
                     UsuarioId = user.Id
                 });
                 return Ok(log);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("IconePaginaZero")]
+        public async Task<ActionResult> IconePaginaZero(int PontoId)
+        {
+            try
+            {
+                Ponto ponto = await _pontoService.Detalhes(PontoId);
+
+                Console.WriteLine(ponto.Pagina.IdPagina);
+
+                if (ponto.Pagina.IdPagina == 0)
+                {
+                    var logIconeZero = await _logIconeZeroService.Novo(new LogIconeZero
+                    {
+                        PontoId = PontoId,
+                        UsuarioId = user.Id
+                    });
+                    return Ok(logIconeZero);
+                }
+                else
+                {
+                    return Ok("Não é ponto zerado");
+                }
             }
             catch (Exception e)
             {
